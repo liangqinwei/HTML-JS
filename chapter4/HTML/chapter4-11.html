@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../../chapter4/CSS/chapter4.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../../chapter4/JS/chapter4.js"></script>
+    <style>
+        ul,li{
+            list-style-type: none;margin: 0;padding: 0;
+        }
+        body{
+            font-size: 12px;
+        }
+
+        .in-content{
+            padding-top: 5px;clear: left;
+        }
+        a{text-decoration: none;color: #666666;padding: 5px}
+        .li-content img{float: left;padding: 3px 6px 0px 6px;text-align: center}
+        .li-content span{float: left;padding: 3px 0px 0px 0px}
+        .li-content{background-color: #FFFDD2;border: solid 1px #e5d1a1;width: 190px;}
+        .opth{line-height: 23px;border-top:dashed 1px #cccccc;}
+        .opthfoucus{background-color: #eeeeee}
+        .content1{width: 190px;border: solid 1px #ffa200;position: absolute;padding: 10px;background-color: #ffffff;display: none}
+        #sort{display: none;position: absolute}
+
+    </style>
+    <script>
+        $(function () {
+            var cury;
+            var curh;
+            var curw;
+            var stry;
+            var strx;
+            var objl;
+            function setInit(obj) {
+                cury=obj.offset().top;
+                curh=obj.height();
+                curw=obj.width();
+                stry=cury+(curh/2)+"px";
+                strx=curw-15+"px";
+            }
+            $(".opth").mouseover(function () {
+                objl=$(this)
+                setInit(objl);
+                var ally=cury-curh+"px";
+                objl.next("ul").show().css({"top":ally,"left":curw})
+                objl.addClass("opthfoucus");
+                $("#sort").show().css({"top":stry,"left":strx})
+            })
+                .mouseout(function () {
+                    $(this).removeClass("opthfoucus")
+                    $(this).next("ul").hide()
+                    $("#sort").hide()
+
+            })
+
+            $(".content1").mouseover(function () {
+                $(this).show();
+                objl=$(this).prev("li")
+                setInit(objl);
+                objl.addClass("opthfoucus")
+                $("#sort").show().css({ "top": stry, "left": strx })
+            }).mouseout(function () {
+                $(this).hide()
+                $(this).prev("li").removeClass("opthfoucus")
+                $("#sort").hide()
+            })
+
+        })
+    </script>
+</head>
+<body>
+<ul class="ul-content">
+    <li class="li-content">
+        <div>
+            <img alt="" src="../IMAGE/icon.gif">
+            <span>电脑数码新产品</span>
+        </div>
+        <ul class="in-content">
+            <li class="opth"><a href="">笔记本</a></li>
+            <ul class="content1">
+                <li>笔记本1</li>
+                <li>笔记本1</li>
+                <li>笔记本1</li>
+                <li>笔记本1</li>
+                <li>笔记本1</li>
+            </ul>
+            <li class="opth"><a href="">移动硬盘</a></li>
+            <ul class="content1">
+                <li>移动硬盘1</li>
+                <li>移动硬盘1</li>
+                <li>移动硬盘1</li>
+                <li>移动硬盘1</li>
+                <li>移动硬盘1</li>
+            </ul>
+            <li class="opth"><a href="">电脑配件</a></li>
+            <ul class="content1">
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+            </ul>
+            <li class="opth"><a href="">数码产品</a></li>
+            <ul class="content1">
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+                <li>电脑配件1</li>
+            </ul>
+
+        </ul>
+        <img id="sort" src="../IMAGE/sort.gif" alt="">
+    </li>
+</ul>
+
+
+</body>
+</html>

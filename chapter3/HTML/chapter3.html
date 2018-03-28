@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/chapter3.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../JS/chapter3.js"></script>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        div{
+            padding: 3px;
+            margin: 3px;
+            text-align: center;
+            float: left;
+        }
+        .select1{
+
+        }
+    </style>
+    <script>
+        $(function () {
+            $("select").change(function () {
+                var str=$("select").val().join(",")
+                $("#p1").html(str)
+            })
+            $(".txt").change(function () {
+                var str=$(".txt").val()
+                $("#p2").html(str)
+            })
+            $(".txt").focus(function () {
+
+                $(".txt").val("")
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    <select multiple="multiple" style="height: 96px;width: 85px">
+        <option>体育</option>
+        <option>数学</option>
+        <option>语言</option>
+        <option>化学</option>
+        <option>物理</option>
+        <option>科学</option>
+    </select>
+    <p id="p1"></p>
+</div>
+<div >
+    <input type="text" class="txt">
+    <p id="p2"></p>
+</div>
+
+
+</body>
+</html>

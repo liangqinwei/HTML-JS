@@ -1,0 +1,45 @@
+body{
+    font-size: 12px;
+}
+.reveal{
+    width: 280px;
+    overflow: hidden;
+    margin: auto;
+    border: solid 1px;
+}
+.top{
+    height: 30px;
+    background: #666;
+    padding: 0px;
+
+}
+.top h3{
+    float: left;
+    padding: 2px;
+    margin: 0px;
+}
+.top span{
+    padding: 2px 2px 5px 2px;
+    margin: 2px;
+    float: right;
+}
+.fi_line{
+    float: right;
+    margin: 0px;
+    padding: 0px  5px 5px 0px;
+}
+
+
+
+.content ul{
+    padding: 0px;
+}
+.content li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 15px;
+}
+.content a{text-decoration: none}
+.getfoucs{
+    background: red;
+}

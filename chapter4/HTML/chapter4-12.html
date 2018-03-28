@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../../chapter4/CSS/chapter4.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../../chapter4/JS/chapter4.js"></script>
+    <style>
+        ul,li{margin: 0;padding: 0;}
+        .ul-content{width666666;w: 300px;margin-top:25px }
+        .ul-content li{text-align:center;width: 50px;padding: 5px 10px}
+        ul li{list-style-type: none;display: inline}
+        .tabfoucs{background-color:#eeeeee;border: 1px solid #666666;border-bottom: 0;z-index: 100 }
+        .ul-content2 {border: 1px solid ;width: 300px;height: 120px;display: list-item;background-color: #eeeeee;margin-top:4px}
+        .ul-content2 li{display: none}
+        .confocus {display: block}
+    </style>
+    <script>
+        $(function () {
+            $(".ul-content li").each(function (index) {
+                $(this).click(function () {
+                    $(".tabfoucs").removeClass("tabfoucs")
+                    $(this).addClass("tabfoucs")
+                    $(".confocus").removeClass()
+                    $(".ul-content2 li:eq("+index+")").show().siblings().hide()
+
+                })
+
+
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<ul class="ul-content">
+    <li class="tabfoucs"><a href="#">家居</a></li>
+    <li ><a href="#">电器</a></li>
+    <li ><a href="#">二手</a></li>
+</ul>
+<ul class="ul-content2">
+    <li class="confocus"><a href="#">这是是家居</a></li>
+    <li ><a href="#">这是是电器</a></li>
+    <li ><a href="#">你好，来到二手</a></li>
+</ul>
+
+
+</body>
+</html>

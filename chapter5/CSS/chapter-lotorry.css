@@ -1,0 +1,49 @@
+
+body{margin:0;padding: 0;border: 0;}
+body{color:#cccccc;font-size: 12px;height: 100%}
+html{height: 100%}
+
+#wheel_canvas{
+    background: url("../IMAGE/turnplate-bg.png");repeat:no;
+    width:820px;
+    height:820px;
+    background-size: 100% 100%;
+
+
+}
+.center{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: #aaaaaa;
+    filter: Alpha(Opacity=20, Style=0);
+
+}
+
+.center .lotory{
+    position: absolute;
+    width:820px;
+    height:820px;
+    margin:auto;
+    z-index: 10;
+    border: solid 1px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+.center .lotory canvas.item{
+
+}
+.center .lotory img.pointer{
+    position: absolute;
+    margin:auto;
+    top: 23.30%;
+    left: 34.35%;
+    height: 42.5%;
+    width:31.5%
+}
+
+

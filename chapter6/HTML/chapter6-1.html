@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/chapter6.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../JS/chapter6.js"></script>
+    <style>
+        body{font-size: 12px}
+        .divFrame{border: solid 1px #000000;width: 250px}
+        .divFrame .button2{padding: 5px}
+        .divTitle{background-color: #eeeeee;padding: 5px 0px 5px 5px;margin: 0px }
+        .btn{border: solid 1px #000000;}
+
+    </style>
+    <script TYPE="text/javascript">
+            var objXmlHttp=null;
+            function CreateXMLHTTP() {
+                if(window.ActiveXObject){
+                    objXmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }else {
+                    if(window.XMLHttpRequest){
+                        objXmlHttp=new XMLHttpRequest()
+                    }
+                    else {
+                        alert("初始化xmlhttp错误")
+                    }
+                }
+            }
+
+            function GetSendData() {
+                document.getElementById("divTip").innerHTML="<img alt='' title='正在加载中...' src='../IMAGE/Loading.gif' />";
+                var senURL="chapter6-1b.html?Date="+Date();
+                CreateXMLHTTP();
+                objXmlHttp.open("GET",senURL,true);
+                objXmlHttp.onreadystatechange=function () {
+                    if(objXmlHttp.readyState==4){
+
+                        if(objXmlHttp.status=200){
+                            document.getElementById("divTip").innerHTML=objXmlHttp.responseText;
+                        }
+                    }
+                }
+                objXmlHttp.send(null)
+            }
+
+    </script>
+</head>
+<body>
+<div class="divFrame">
+    <div class="divTitle">
+        <input type="button" id="button1" onclick="GetSendData()" class="btn" value="获取数据">
+    </div>
+    <div id="divTip" class="button2">
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

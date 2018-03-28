@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/chapter3.css">
+    <script type="text/javascript" language="JavaScript" src="../package/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../JS/chapter3.js"></script>
+    <style>
+        body {
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 360px;
+        }
+
+        th, td {
+            border: solid 1px #000000;
+            text-align: center;
+            padding: 3px;
+        }
+
+        img {
+            height: 60px;
+            width: 42px;
+            cursor: hand;
+            padding: 3px;
+        }
+
+        #table2 td {
+            text-align: left;
+        }
+
+        .changcolor {
+            background: #eee;
+        }
+
+        #imgtip {
+            display: none;
+            width: 85px;
+            height: 120px;
+        }
+
+    </style>
+    <script>
+        $(function () {
+            //隔行换色
+            $("#table1 tr:even").addClass("changcolor")
+
+
+            //全选
+            $("#checkall").click(function () {
+                if (this.checked) {
+
+                    $("#table1 input[type=checkbox]").attr("checked", true)
+                } else {
+
+                    $("#table1 input[type=checkbox]").attr("checked", false)
+                }
+            })
+
+            //删除选中行
+            $("#delete").click(function () {
+                var len = $("#table1 tr td input[type=checkbox]:checked").length;
+                if (len != 0) {
+                    $("#table1 tr td input[type=checkbox]").each(function () {
+                        n=$(this).parents("tr").index()
+                        if(this.checked){
+                            $("#table1").find("tr:eq("+n+")").remove()
+                        }
+                    })
+                }
+            })
+            //图片放大
+            $("#table1 tr td img").mousemove(function (e) {
+                $("#imgtip").attr("src",this.src).css({"top":e.pageY+"px","left":e.pageX+"px"}).show()
+            })
+            $("#table1 tr td img").mouseleave(function (e) {
+                $("#imgtip").hide()
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div>
+    <table id="table1">
+        <th>选项</th>
+        <th>编号</th>
+        <th>封面</th>
+        <th>购书人</th>
+        <th>性别</th>
+        <th>购书价</th>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><p>1001</p></td>
+            <td><img src="../IMAGE/img03.jpg"></td>
+            <td><p>李小明</p></td>
+            <td><P>男</P></td>
+            <td><p>35.60元</p></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><p>1002</p></td>
+            <td><img src="../IMAGE/img04.jpg"></td>
+            <td><p>李小明</p></td>
+            <td><P>男</P></td>
+            <td><p>35.60元</p></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><p>1003</p></td>
+            <td><img src="../IMAGE/img08.jpg"></td>
+            <td><p>李小明</p></td>
+            <td><P>男</P></td>
+            <td><p>35.60元</p></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><p>1004</p></td>
+            <td><img src="../IMAGE/img03.jpg"></td>
+            <td><p>李小明</p></td>
+            <td><P>男</P></td>
+            <td><p>35.60元</p></td>
+        </tr>
+
+    </table>
+
+    <table id="table2">
+        <tr>
+            <td><span><input type="checkbox" id="checkall">全选</span>
+                <span><input id="delete" type="button" value="删除"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+<img src="" id="imgtip">
+
+
+</body>
+</html>

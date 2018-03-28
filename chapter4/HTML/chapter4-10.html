@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../../chapter5/CSS/chapter5.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../../chapter5/JS/chapter5.js"></script>
+    <style>
+        body{
+            font-size: 12px;
+            margin: 0px;
+        }
+        .choiceinit{
+            width:550px ;
+            height: 40px;
+            padding: 20px 10px;
+        }
+        .selectinit1,.selectinit2,.selectinit3{
+            width: 80px;
+            margin: 0px 15px 0px 0px;
+        }
+        .btn{
+            width: 40px;
+            text-align: center;
+            background-color: #eeeeee;
+        }
+
+        .resultinit{
+            display: none;
+            background-color: azure;
+            width: 550px;
+            height: 30px;
+            text-align: center;
+            padding:10px 0px 0px 0px;
+        }
+        .csstip{
+            border: solid 1px red;
+        }
+
+
+    </style>
+    <script>
+
+        $(function () {
+            //初始化下拉列表
+            function objInit(obj) {
+                return $(obj).html("<option>请选择</option>")
+            }
+            var data={
+                厂商1: { 品牌1_1: "型号1_1_1,型号1_1_2", 品牌1_2: "型号1_2_1,型号1_2_2" },
+                厂商2: { 品牌2_1: "型号2_1_1,型号2_1_2", 品牌2_2: "型号2_2_1,型号2_2_2" },
+                厂商3: { 品牌3_1: "型号3_1_1,型号3_1_2", 品牌3_2: "型号3_2_1,型号3_2_2" }
+            }
+
+
+            $.each(data,function (F) {
+                $("#select1").append("<option>"+F+"</option>");
+            })
+            $("#select1").change(function () {
+                objInit("#select2")
+                objInit("#select3")
+                $.each(data,function (F, S) {
+                    if ($("#select1 option:selected").text()==F){
+                        $.each(S,function (C,D) {
+                            $("#select2").append("<option>"+C+"</option>")
+                        })
+                        $("#select2").change(function () {
+                            objInit("#select3")
+                            $.each(S,function (C, D) {
+                                if ($("#select2 option:selected").text()==C){
+                                    $.each(D.split(","),function (I) {
+                                        $("#select3").append("<option>"+this+"</option>")
+                                    })
+                                }
+                            })
+                        })
+                    }
+                    else {
+
+                    }
+                })
+            })
+
+            $("#button1").click(function () {
+                var txtstr="请选择你的选择"
+                var sel1=$("#select1 option:selected").text()
+                var sel2=$("#select2 option:selected").text()
+                var sel3=$("#select3 option:selected").text()
+                if((sel1=="请选择")||(sel1=="")||(sel1==null)){
+                    $("#select1").addClass("csstip")
+                    $("#result").html(txtstr).show();
+                }
+                else if ((sel2=="请选择")||(sel2=="")||(sel2==null)){
+                    $("#select1").removeClass("csstip")
+                    $("#select2").addClass("csstip")
+                    $("#result").html(txtstr).show();
+                }
+                else if((sel3=="请选择")||(sel3=="")||(sel3==null)){
+                    $("#select1").removeClass("csstip")
+                    $("#select2").removeClass("csstip")
+                    $("#select3").addClass("csstip")
+                    $("#result").html(txtstr).show();
+                }else {
+                    $("#select3").removeClass("csstip")
+                    txtstr=sel1+sel2+sel3;
+                    $("#result").html(txtstr).show();
+                }
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="choice" class="choiceinit">
+    厂商：
+    <select class="selectinit1" id="select1">
+        <option>请选择</option>
+    </select>
+    品牌：
+    <select class="selectinit2" id="select2">
+        <option>请选择</option>
+    </select>
+    型号：
+    <select class="selectinit3" id="select3">
+        <option>请选择</option>
+    </select>
+
+    <input id="button1" class="btn" value="查询">
+
+</div>
+<div class="resultinit" id="result">
+
+</div>
+</body>
+</html>

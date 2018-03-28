@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/chapter4.css">
+    <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../JS/chapter4.js"></script>
+    <style>
+        /*初始状态样式*/
+        body{
+            font-size: 12px;
+        }
+        #email{
+            display: block;
+            height: 40px;
+            width: 420px;
+            line-height: 40px;
+            padding-left: 10px;
+            padding-right: 10px;
+         }
+        .titleinit{
+            float: left;
+            font-family: 微软雅黑;
+            padding: 2px;
+            margin: 0px 2px;
+        }
+        .inputinit{
+            border: none 1px;
+            background-image: url("../IMAGE/bg_email_input.gif");
+        }
+        .tipinit{
+            width: 179px;
+            height: 40px;
+            line-height: 40px;
+            float: right;
+            background-repeat: no-repeat;
+            padding: 0px 0px 0px 10px;
+        }
+
+        /*获取焦点样式*/
+
+
+
+        /*输入为空失去焦点样式*/
+        .inputinit2{
+            background-image: url("../IMAGE/bg_email_input2.gif");
+        }
+        .tipinit2{
+            background-image: url("../IMAGE/bg_email_wrong.gif");
+        }
+        .inputinitright{
+            background-repeat: no-repeat;
+            margin-top: 13px;
+            background-image: url("../IMAGE/pic_Email_ok.gif");
+        }
+
+
+
+    </style>
+    <script>
+        $(function () {
+            //            获取焦点时，提示输入正确邮箱
+            $("#email_input").trigger("focus")
+            $("#email_input").focus(function () {
+                $(this).removeClass("inputinit2").addClass("inputinit")
+                $("#wrontip").removeClass("tipinit2").removeClass("inputinitright").html("请输入正确的邮箱")
+
+                    })
+
+//            输入框失去焦点时，提示不能为空
+            $("#email_input").blur(function () {
+                var str=$("#email_input").val()
+                if(str.length==0){
+                    $(this).removeClass("inputinit").addClass("inputinit2")
+                    $("#wrontip").addClass("tipinit2").html("邮箱不能为空")
+                }
+                else {
+                    //输入正确失去信息样式
+                    check=checkemail(str.trim())
+                    if (check){
+                        $(this).removeClass("inputinit").removeClass("inputinit2")
+                        $("#wrontip").removeClass("tipinit2").addClass("inputinitright").html("")
+                    }
+                    else {//输入错误失去焦点样式
+                        $(this).removeClass("inputinit").addClass("inputinit2")
+                        $("#wrontip").addClass("tipinit2").html("邮箱格式错误")
+                    }
+                }
+            })
+
+            //检查邮箱格式是否正常
+            function checkemail(stremail) {
+                var regemail=/^\w+([-+.]\w+)*@\w+([-+.]\w+)*\.\w+([-+.]\w+)*$/
+                if(regemail.test(stremail)){
+                    return true
+                }
+                else {
+                    return false
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+<div id="email">
+    <span id="email_title" class="titleinit">邮箱:</span>
+    <input type="text" id="email_input" class="inputinit">
+    <span id="wrontip" class="tipinit"></span>
+
+</div>
+
+
+</body>
+</html>
