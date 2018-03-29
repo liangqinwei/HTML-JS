@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
     <title>Title</title>
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="../CSS/chapter5.css">
     <script type="text/javascript" language="JavaScript" src="../../package/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" language="JavaScript" src="../JS/chapter5.js"></script>
     <style>
+        p {
+            -webkit-user-select: none;
+            -moz-user-select:none;
+            user-select: none;
+            -ms-user-select:none;
 
+        }
+        p > i {
+            -webkit-user-select: text;
+            user-select: text;
+            -moz-user-select:text;
+
+        }
     </style>
 
 </head>
@@ -18,6 +30,9 @@
     <p style="border: solid 1px">我是逻辑显示</p>
     <p style="border: solid 1px">我是动画显示</p>
     <div class="p2"><img src="../IMAGE/QQ20.png"></div>
+
+
+    <p>长按复制短码<i>2333333</i>粘贴</p>
 
 </div>
 
